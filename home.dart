@@ -22,4 +22,11 @@ void main() {
   print(persona);
   print(persona["nombre"]);
   print(persona["foto"][2]);
+
+  final List<int> number = [1,2,3,4];
+  print(number);
+  print("tamaño del arreglo ${number.length}");
+  print("primero ${number.first}");
+  print("ultimo ${number.last}");
+  
 }
