@@ -28,5 +28,8 @@ void main() {
   print("tamaño del arreglo ${number.length}");
   print("primero ${number.first}");
   print("ultimo ${number.last}");
+
+
+
   
 }
