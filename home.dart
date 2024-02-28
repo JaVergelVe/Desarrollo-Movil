@@ -62,11 +62,27 @@ void main() async {
   // } finally {
   //   print("siempre");
   // }
+
+  emitirNumeros().listen((event) {
+    print("stream $event");
+  });
+}
+
+Stream<int> emitirNumeros() async* {
+  final valorEmitir = [1,2,3,4,5];
+  for(int i in valorEmitir){
+    await Future.delayed(const Duration(seconds: 1));
+    yield i;
+  }
+
+  // return Stream.periodic(const Duration(seconds: 1), (value){
+  //   return value;
+  // }).take(5);
 }
 
 // Future<String> httpGet(String url) async {
 //   final pet = await Future.delayed(const Duration(seconds: 3));
-//   throw Exception();
+//   throw Exception("error");
 //   return "llegue";
 // }
 
