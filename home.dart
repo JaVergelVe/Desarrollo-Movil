@@ -1,4 +1,4 @@
-void main() {
+void main() async {
   // dynamic numero = "";
   // numero = 0;
   // numero = "Hola";
@@ -49,28 +49,26 @@ void main() {
   // print(person.nombre);
   // print(person.apellido);
 
-  final cuadrado = Cuadrado(lado : 5);
-  print(cuadrado._lado);
-  cuadrado._lado = -5;
-  print(cuadrado._lado);
-
+  // print("inicio");
+  // try {
+  //   final pet = await httpGet("dklfjalasdad");
+  //   print(pet);
+  //   print("final");
+  // } on Exception {
+  //   print("esto es un error exception");
+  // } 
+  // catch (e) {
+  //   print("error $e");
+  // } finally {
+  //   print("siempre");
+  // }
 }
 
-class Cuadrado {
-  double _lado;
-
-  Cuadrado({required double lado}) :
-    _lado = lado
-  ;
-
-  set lado(double value){
-    _lado = value;
-  }
-
-  double area_cuadrado(){
-    return _lado * _lado;
-  }
-}
+// Future<String> httpGet(String url) async {
+//   final pet = await Future.delayed(const Duration(seconds: 3));
+//   throw Exception();
+//   return "llegue";
+// }
 
 // int sumar({required int a, int b = 0}) {
 //   return a + b;
