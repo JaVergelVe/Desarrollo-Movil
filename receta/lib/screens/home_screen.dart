@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _indicador = 0;
   static final List _menu = [
     const RecetaScreen(),
-    const BebidaScreen(),
+    BebidaScreen(),
   ];
   
   @override

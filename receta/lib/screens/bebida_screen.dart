@@ -1,10 +1,22 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class BebidaScreen extends StatelessWidget{
-  const BebidaScreen({Key? key}) : super(key: key);
+  BebidaScreen({Key? key}) : super(key: key);
+
+  final List<String> items = [
+    "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete"
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return const Text("Hola bebida");
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(items[index]),
+        );
+      }
+    );
   }
 }
