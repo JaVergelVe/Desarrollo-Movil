@@ -34,20 +34,18 @@ class _BebidaScreenState extends State<BebidaScreen> {
       itemBuilder: (context, index) {
         return Column(
           children: [
-            Container(
-              child: Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: Image.network(
-                      items[index]["strDrinkThumb"],
-                      width: size.width*0.2,
-                    ),
+            Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Image.network(
+                    items[index]["strDrinkThumb"],
+                    width: size.width*0.2,
                   ),
-                  SizedBox(width: 10,),
-                  Text(items[index]["strDrink"])
-                ],
-              ),
+                ),
+                const SizedBox(width: 10,),
+                Text(items[index]["strDrink"])
+              ],
             ),
           ],
         );

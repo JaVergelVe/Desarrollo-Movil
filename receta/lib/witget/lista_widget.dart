@@ -10,9 +10,9 @@ class ListWidget extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Lista widget"),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
-          children: const [
+          children: [
             Text("uno"),
             Text("dos")
           ],

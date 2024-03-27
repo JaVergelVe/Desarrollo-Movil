@@ -8,10 +8,10 @@ class Hola extends StatelessWidget{
         appBar: AppBar(
           title: const Text("Esto es mi app"),
         ),
-        body: Center(
+        body: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Text("Hola primer texto"),
               Text("Hola segundo texto"),
               Text("Hola tercer texto"),
