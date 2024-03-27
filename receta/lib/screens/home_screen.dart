@@ -1,6 +1,3 @@
-import 'dart:html';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:receta/screens/bebida_screen.dart';
 import 'package:receta/screens/receta_screen.dart';
@@ -16,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _indicador = 0;
   static final List _menu = [
     const RecetaScreen(),
-    BebidaScreen(),
+    const BebidaScreen(),
   ];
   
   @override
@@ -31,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(5),
           children: [
             ListTile(
-              title: Text("Receta"),
+              title: const Text("Receta"),
               onTap: (){
                 _indicador = 0;
                 setState(() {});
@@ -39,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               ),
             ListTile(
-              title: Text("Bebidas"),
+              title: const Text("Bebidas"),
               onTap: (){
                 _indicador = 1;
                 setState(() {});
