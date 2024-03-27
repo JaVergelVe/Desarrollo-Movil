@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class IngredienteScreen extends StatelessWidget{
-  const IngredienteScreen({Key? key}) : super(key: key);
+  const IngredienteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

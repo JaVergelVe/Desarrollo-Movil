@@ -3,7 +3,7 @@ import 'package:parcial1/screens/bebida_screen.dart';
 import 'package:parcial1/screens/receta_screen.dart';
 
 class HomeScreen extends StatefulWidget{
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

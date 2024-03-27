@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ListWidget extends StatelessWidget {
   final String id;
-  const ListWidget({Key? key, required this.id}) : super(key: key);
+  const ListWidget({super.key, required this.id});
   
   @override
   Widget build(BuildContext context) {
@@ -10,9 +10,9 @@ class ListWidget extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Lista widget"),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
-          children: const [
+          children: [
             Text("uno"),
             Text("dos")
           ],

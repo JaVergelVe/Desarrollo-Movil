@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:parcial1/config/helpers/get_peticion.dart';
+import 'package:parcial1/screens/info_bebidas_screen.dart';
 
 class BebidaScreen extends StatefulWidget{
-  const BebidaScreen({Key? key}) : super(key: key);
+  const BebidaScreen({super.key});
 
   @override
   State<BebidaScreen> createState() => _BebidaScreenState();
@@ -34,20 +35,26 @@ class _BebidaScreenState extends State<BebidaScreen> {
       itemBuilder: (context, index) {
         return Column(
           children: [
-            Container(
-              child: Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: Image.network(
-                      items[index]["strDrinkThumb"],
-                      width: size.width*0.2,
-                    ),
+            Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Image.network(
+                    items[index]["strDrinkThumb"],
+                    width: size.width*0.2,
                   ),
-                  SizedBox(width: 10,),
-                  Text(items[index]["strDrink"])
-                ],
-              ),
+                ),
+                const SizedBox(width: 10,),
+                Text(items[index]["strDrink"]),
+                const SizedBox(width: 10,),
+                ElevatedButton(
+                  onPressed: (){
+                    setState(() {});
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => InfoBebidas(idBebida: items[index]["idDrink"])));
+                  },
+                  child: const Text("INFO"),
+                )
+              ],
             ),
           ],
         );
