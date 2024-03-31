@@ -1,7 +1,4 @@
-// ignore_for_file: prefer_interpolation_to_compose_strings
-
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:parcial1/config/helpers/get_peticion.dart';
 
@@ -33,20 +30,56 @@ class _InfoBebidas extends State<InfoBebidas> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Drink Details'),
+      ),
       body: Center(
-        child: FutureBuilder(
-          future: Future.delayed(const Duration(milliseconds: 300)),
+        child: FutureBuilder<dynamic>(
+          future: Future.delayed(const Duration(milliseconds: 500)),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
-              return Column(
-                children: [
-                  Text("Drink : " + info[0]["strDrink"]),
-                  Text("Category: " + info[0]["strCategory"]),
-                  Text("Alcoholic: " + info[0]["strAlcoholic"]),
-                  Text("Glass: " + info[0]["strGlass"]),
-                  Text("Instructions: " + info[0]["strInstructions"]),
-                  Image.network(info[0]["strDrinkThumb"]),
-                ],
+              return SingleChildScrollView(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'Drink: ${info[0]['strDrink']}',
+                      style: const TextStyle(fontSize: 20.0),
+                    ),
+                    const SizedBox(height: 10.0),
+                    Row(
+                      children: [
+                        const Text('Category: ', style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(info[0]['strCategory']),
+                      ],
+                    ),
+                    const SizedBox(height: 10.0),
+                    Row(
+                      children: [
+                        const Text('Alcoholic: ', style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(info[0]['strAlcoholic']),
+                      ],
+                    ),
+                    const SizedBox(height: 10.0),
+                    Row(
+                      children: [
+                        const Text('Glass: ', style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(info[0]['strGlass']),
+                      ],
+                    ),
+                    const SizedBox(height: 10.0),
+                    Text(
+                      'Instructions: ${info[0]['strInstructions']}',
+                      style: const TextStyle(fontStyle: FontStyle.italic),
+                    ),
+                    const SizedBox(height: 10.0),
+                    FadeInImage.assetNetwork(
+                      placeholder: 'assets/images/placeholder.png',
+                      image: info[0]['strDrinkThumb'],
+                      width: double.infinity,
+                    ),
+                  ],
+                ),
               );
             } else {
               return const CircularProgressIndicator();

@@ -29,36 +29,37 @@ class _BebidaScreenState extends State<BebidaScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return ListView.builder(
       itemCount: items.length,
       itemBuilder: (context, index) {
-        return Column(
-          children: [
-            Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: Image.network(
-                    items[index]["strDrinkThumb"],
-                    width: size.width*0.2,
+        return InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => InfoBebidas(idBebida: items[index]["idDrink"]),
+              ),
+            );
+          },
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(100),
+                    child: Image.network(
+                      items[index]["strDrinkThumb"],
+                      width: size.width * 0.2,
+                    ),
                   ),
-                ),
-                const SizedBox(width: 10,),
-                Text(items[index]["strDrink"]),
-                const SizedBox(width: 10,),
-                ElevatedButton(
-                  onPressed: (){
-                    setState(() {});
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => InfoBebidas(idBebida: items[index]["idDrink"])));
-                  },
-                  child: const Text("INFO"),
-                )
-              ],
-            ),
-          ],
+                  const SizedBox(width: 10),
+                  Text(items[index]["strDrink"]),
+                ],
+              ),
+            ],
+          ),
         );
-      }
+      },
     );
   }
 }
