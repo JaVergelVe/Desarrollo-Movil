@@ -43,7 +43,7 @@ class _InfoBebidas extends State<InfoBebidas> {
                 child: Column(
                   children: [
                     Text(
-                      'Drink: ${info[0]['strDrink']}',
+                      info[0]['strDrink'],
                       style: const TextStyle(fontSize: 20.0),
                     ),
                     const SizedBox(height: 10.0),
