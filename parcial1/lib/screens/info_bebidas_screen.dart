@@ -35,7 +35,7 @@ class _InfoBebidas extends State<InfoBebidas> {
       ),
       body: Center(
         child: FutureBuilder<dynamic>(
-          future: Future.delayed(const Duration(milliseconds: 500)),
+          future: Future.delayed(const Duration(seconds: 1)),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
               return SingleChildScrollView(
