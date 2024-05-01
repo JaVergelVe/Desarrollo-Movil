@@ -50,4 +50,22 @@ const appMenuItems = <MenuItems>[
     link: '/infinity',
     icon: Icons.info_outline,
   ),
+  MenuItems(
+    title: 'Conter Screen',
+    subTitle: 'with reperpod',
+    link: '/counter-screen',
+    icon: Icons.info_outline,
+  ),
+  MenuItems(
+    title: 'Change Theme',
+    subTitle: 'with reperpod',
+    link: '/change-theme',
+    icon: Icons.info_outline,
+  ),
+  MenuItems(
+    title: 'formulario ',
+    subTitle: 'Fornulario ',
+    link: '/formulario',
+    icon: Icons.info_outline,
+  )
 ];

@@ -1,3 +1,6 @@
+export 'package:widget_all/presentation/screens/form/form_screen.dart';
+export 'package:widget_all/presentation/screens/change_theme/change_theme.dart';
+export 'package:widget_all/presentation/screens/counter_screen/counter_screen.dart';
 export 'package:widget_all/presentation/screens/infinity/infinity_screen.dart';
 export 'package:widget_all/presentation/screens/controls/control_screen.dart';
 export 'package:widget_all/presentation/screens/snack/snack_screen.dart';

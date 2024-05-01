@@ -4,8 +4,7 @@ import 'package:go_router/go_router.dart';
 class SnackScreen extends StatelessWidget {
   const SnackScreen({super.key});
 
-  // ignore: non_constant_identifier_names
-  void ShowCustomSnackBar(context) {
+  void showCustomSnackBar(context) {
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: const Text("goal"),
@@ -25,7 +24,7 @@ class SnackScreen extends StatelessWidget {
       body: const _SnackView(),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          ShowCustomSnackBar(context);
+          showCustomSnackBar(context);
         },
         label: const Text("Mostrar"),
         icon: const Icon(Icons.search),

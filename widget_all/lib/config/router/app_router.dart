@@ -47,5 +47,23 @@ final GoRouter appRouter = GoRouter(
       builder: (BuildContext context, GoRouterState state) =>
           const InifinityScreen(),
     ),
+    GoRoute(
+      path: '/counter-screen',
+      name: CounterScreen.name,
+      builder: (BuildContext context, GoRouterState state) =>
+          const CounterScreen(),
+    ),
+    GoRoute(
+      path: '/change-theme',
+      name: ChangeTheme.name,
+      builder: (BuildContext context, GoRouterState state) =>
+          const ChangeTheme(),
+    ),
+    GoRoute(
+      path: '/formulario',
+      name: FormScreen.name,
+      builder: (BuildContext context, GoRouterState state) =>
+          const FormScreen(),
+    ),
   ],
 );

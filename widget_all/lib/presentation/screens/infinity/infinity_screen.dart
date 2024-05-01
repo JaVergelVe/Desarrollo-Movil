@@ -29,6 +29,7 @@ class _InifinityViewState extends State<_InifinityView> {
   void addImage() {
     final lastId = imagesIds.last;
     imagesIds.addAll([1, 2, 3, 4, 5].map((e) => lastId + e));
+    loading = false;
   }
 
   @override
@@ -41,12 +42,30 @@ class _InifinityViewState extends State<_InifinityView> {
     });
   }
 
+  moveScrollBootom() {
+    if (scroll.position.pixels + 150 <= scroll.position.maxScrollExtent) return;
+    scroll.animateTo(scroll.position.pixels + 100,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.fastEaseInToSlowEaseOut);
+  }
+
   Future loadNextPage() async {
     if (loading) return;
 
     loading = true;
     setState(() {});
     await Future.delayed(const Duration(seconds: 2));
+    addImage();
+    setState(() {});
+    moveScrollBootom();
+  }
+
+  Future<void> onRefresh() async {
+    await Future.delayed(const Duration(seconds: 3));
+    final lastId = imagesIds.last;
+    loading = true;
+    imagesIds = [];
+    imagesIds.add(lastId + 1);
     addImage();
     setState(() {});
   }
@@ -62,18 +81,21 @@ class _InifinityViewState extends State<_InifinityView> {
       context: context,
       removeBottom: true,
       removeTop: true,
-      child: ListView.builder(
-        controller: scroll,
-        itemCount: imagesIds.length,
-        itemBuilder: (context, index) {
-          return FadeInImage(
-            fit: BoxFit.cover,
-            height: 300,
-            placeholder: const AssetImage('loader.jpg'),
-            image: NetworkImage(
-                'https://picsum.photos/id/${imagesIds[index]}/200/300'),
-          );
-        },
+      child: RefreshIndicator(
+        onRefresh: onRefresh,
+        child: ListView.builder(
+          controller: scroll,
+          itemCount: imagesIds.length,
+          itemBuilder: (context, index) {
+            return FadeInImage(
+              fit: BoxFit.cover,
+              height: 300,
+              placeholder: const AssetImage('loader.jpg'),
+              image: NetworkImage(
+                  'https://picsum.photos/id/${imagesIds[index]}/200/300'),
+            );
+          },
+        ),
       ),
     );
   }
