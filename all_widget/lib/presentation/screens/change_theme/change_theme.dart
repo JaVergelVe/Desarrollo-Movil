@@ -22,15 +22,13 @@ class ChangeTheme extends ConsumerWidget {
               icon: Icon(theme ? Icons.dark_mode : Icons.light_mode))
         ],
       ),
-      body: _ThemeChange(),
+      body: const _ThemeChange(),
     );
   }
 }
 
 class _ThemeChange extends ConsumerWidget {
-  const _ThemeChange({
-    super.key,
-  });
+  const _ThemeChange();
 
   @override
   Widget build(BuildContext context, ref) {

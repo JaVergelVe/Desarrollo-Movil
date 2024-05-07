@@ -8,6 +8,7 @@ class CounterScreen extends ConsumerWidget {
 
   const CounterScreen({super.key});
 
+  @override
   Widget build(BuildContext context, WidgetRef ref) {
     final int counter = ref.watch(counterProvider);
     final bool theme = ref.watch(themeProvider);
@@ -33,7 +34,7 @@ class CounterScreen extends ConsumerWidget {
           // ref.read(counterProvider.notifier).state++;
           ref.read(counterProvider.notifier).update((state) => state + 1);
         },
-        child: Icon(Icons.abc_outlined),
+        child: const Icon(Icons.abc_outlined),
       ),
     );
   }

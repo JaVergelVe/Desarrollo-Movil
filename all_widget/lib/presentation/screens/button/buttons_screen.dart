@@ -10,23 +10,21 @@ class ButtonsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Button Screen"),
+        title: const Text("Button Screen"),
       ),
-      body: _ButtonView(),
+      body: const _ButtonView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           context.pop();
         },
-        child: Icon(Icons.arrow_back_ios),
+        child: const Icon(Icons.arrow_back_ios),
       ),
     );
   }
 }
 
 class _ButtonView extends StatelessWidget {
-  const _ButtonView({
-    super.key,
-  });
+  const _ButtonView();
 
   @override
   Widget build(BuildContext context) {
@@ -52,22 +50,22 @@ class _ButtonView extends StatelessWidget {
             FilledButton(onPressed: () {}, child: const Text("Relleno")),
             FilledButton.icon(
               onPressed: () {},
-              icon: Icon(Icons.access_alarm_sharp),
+              icon: const Icon(Icons.access_alarm_sharp),
               label: const Text("Relleno"),
             ),
-            OutlinedButton(onPressed: () {}, child: Text("hika")),
+            OutlinedButton(onPressed: () {}, child: const Text("hika")),
             OutlinedButton.icon(
                 onPressed: () {},
-                icon: Icon(Icons.account_balance_wallet),
+                icon: const Icon(Icons.account_balance_wallet),
                 label: const Text("outline")),
-            TextButton(onPressed: () {}, child: Text("gla")),
+            TextButton(onPressed: () {}, child: const Text("gla")),
             TextButton.icon(
                 onPressed: () {},
-                icon: Icon(Icons.account_balance_wallet),
+                icon: const Icon(Icons.account_balance_wallet),
                 label: const Text("outline")),
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.dangerous),
+              icon: const Icon(Icons.dangerous),
             ),
           ],
         ),

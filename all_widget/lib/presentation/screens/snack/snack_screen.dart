@@ -4,10 +4,11 @@ import 'package:go_router/go_router.dart';
 class SnackScreen extends StatelessWidget {
   const SnackScreen({super.key});
 
+  // ignore: non_constant_identifier_names
   void ShowCustomSnackBar(context) {
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text("goal"),
+      content: const Text("goal"),
       action: SnackBarAction(
         label: 'Ok',
         onPressed: () {},
@@ -19,24 +20,22 @@ class SnackScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("SnackBar"),
+        title: const Text("SnackBar"),
       ),
-      body: _SnackView(),
+      body: const _SnackView(),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           ShowCustomSnackBar(context);
         },
-        label: Text("Mostrar"),
-        icon: Icon(Icons.search),
+        label: const Text("Mostrar"),
+        icon: const Icon(Icons.search),
       ),
     );
   }
 }
 
 class _SnackView extends StatelessWidget {
-  const _SnackView({
-    super.key,
-  });
+  const _SnackView();
 
   void openDialog(BuildContext context) {
     showDialog(
@@ -68,17 +67,17 @@ class _SnackView extends StatelessWidget {
               applicationName: "Nombre",
               context: context,
               children: [
-                Text("esto es n dialogo"),
+                const Text("esto es n dialogo"),
               ],
             );
           },
-          child: Text("licencias"),
+          child: const Text("licencias"),
         ),
         FilledButton(
           onPressed: () {
             openDialog(context);
           },
-          child: Text("Otro texto"),
+          child: const Text("Otro texto"),
         ),
       ],
     ));

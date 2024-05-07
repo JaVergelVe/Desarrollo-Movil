@@ -11,15 +11,13 @@ class ProgressScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("progresss"),
       ),
-      body: _ProgressView(),
+      body: const _ProgressView(),
     );
   }
 }
 
 class _ProgressView extends StatelessWidget {
-  const _ProgressView({
-    super.key,
-  });
+  const _ProgressView();
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +41,7 @@ class _ProgressView extends StatelessWidget {
 }
 
 class _ControllerProgress extends StatefulWidget {
-  const _ControllerProgress({super.key});
+  const _ControllerProgress();
 
   @override
   State<_ControllerProgress> createState() => __ControllerProgressState();

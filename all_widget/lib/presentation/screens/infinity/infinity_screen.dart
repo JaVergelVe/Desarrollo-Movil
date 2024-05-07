@@ -9,15 +9,13 @@ class InifinityScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Inifinty'),
       ),
-      body: _InifinityView(),
+      body: const _InifinityView(),
     );
   }
 }
 
 class _InifinityView extends StatefulWidget {
-  const _InifinityView({
-    super.key,
-  });
+  const _InifinityView();
 
   @override
   State<_InifinityView> createState() => _InifinityViewState();

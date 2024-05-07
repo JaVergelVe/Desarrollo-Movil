@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 const cards = <Map<String, dynamic>>[
   {'elevation': 0.0, 'label': 'elevation 0'},
@@ -18,17 +17,15 @@ class CardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Card Screen"),
+        title: const Text("Card Screen"),
       ),
-      body: _CardsView(),
+      body: const _CardsView(),
     );
   }
 }
 
 class _CardsView extends StatelessWidget {
-  const _CardsView({
-    super.key,
-  });
+  const _CardsView();
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +47,7 @@ class _CardsView extends StatelessWidget {
 class _CardType extends StatelessWidget {
   final double elevation;
   final String label;
-  const _CardType({super.key, required this.elevation, required this.label});
+  const _CardType({required this.elevation, required this.label});
 
   @override
   Widget build(BuildContext context) {

@@ -3,12 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:all_widget/config/router/app_router.dart';
 import 'package:all_widget/config/theme/app_theme.dart';
 import 'package:all_widget/presentation/providers/theme_provider.dart';
-import 'package:all_widget/presentation/screens/button/buttons_screen.dart';
-import 'package:all_widget/presentation/screens/card/card_screen.dart';
-import 'package:all_widget/presentation/screens/home/home_screen.dart';
 
 void main() {
-  runApp(ProviderScope(child: const MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends ConsumerWidget {

@@ -7,7 +7,7 @@ class ControlScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Controls"),
+        title: const Text("Controls"),
       ),
       body: const _ControlView(),
     );
@@ -15,9 +15,7 @@ class ControlScreen extends StatelessWidget {
 }
 
 class _ControlView extends StatefulWidget {
-  const _ControlView({
-    super.key,
-  });
+  const _ControlView();
 
   @override
   State<_ControlView> createState() => _ControlViewState();
@@ -35,7 +33,7 @@ class _ControlViewState extends State<_ControlView> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       children: [
         SwitchListTile(
           value: isMode,
@@ -92,7 +90,7 @@ class _ControlViewState extends State<_ControlView> {
           ],
         ),
         ExpansionTile(
-          title: Text('Comida'),
+          title: const Text('Comida'),
           children: [
             CheckboxListTile(
                 title: const Text('Desayuno'),
