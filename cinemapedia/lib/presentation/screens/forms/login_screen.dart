@@ -33,10 +33,20 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (_formKey.currentState?.validate() ?? false) {
       if (email == info["email"] && password == info["password"]) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Inicio de sesion correcto'),
+            backgroundColor: Colors.green,
+          ),
+        );
         context.go('/home');
       } else {
-        // ignore: avoid_print
-        print("error");
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Correo electrónico o contraseña incorrectos'),
+            backgroundColor: Colors.red,
+          ),
+        );
       }
     }
   }
