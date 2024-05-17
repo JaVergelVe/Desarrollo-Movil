@@ -13,7 +13,7 @@ class FullScreenLoader extends StatelessWidget {
       'Esto esta tardando más de la esperando :('
     ];
 
-    return Stream.periodic(const Duration(milliseconds: 1200), (step) {
+    return Stream.periodic(const Duration(milliseconds: 1800), (step) {
       return messages[step];
     }).take(messages.length);
   }
@@ -22,6 +22,7 @@ class FullScreenLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text('Espere por favor'),
           const SizedBox(height: 10),
