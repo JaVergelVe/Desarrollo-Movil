@@ -5,7 +5,6 @@ import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:cinemapedia/presentation/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
-
   static const name = 'home_screen';
 
   const HomeScreen({super.key});

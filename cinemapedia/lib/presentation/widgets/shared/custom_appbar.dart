@@ -14,39 +14,57 @@ class CustomAppbar extends ConsumerWidget {
     final titleStyle = Theme.of(context).textTheme.titleMedium;
 
     return SafeArea(
-        bottom: false,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: SizedBox(
-            width: double.infinity,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Icon(Icons.movie_outlined, color: colors.primary),
-                const SizedBox(width: 5),
-                Text('FilmsMedia', style: titleStyle),
-                const Spacer(),
-                IconButton(
-                    onPressed: () {
-                      final searchedMovies = ref.read(searchedMoviesProvider);
-                      final searchQuery = ref.read(searchQueryProvider);
-
-                      showSearch<Movie?>(
-                          query: searchQuery,
-                          context: context,
-                          delegate:
-                              SearchMovieDelegate(
-                                initialMovies: searchedMovies,
-                                searchMovieCallback: ref.read(searchedMoviesProvider.notifier).searchMoviesCallback
-                              )).then((movie) {
-                        if (movie == null) return;
-                        context.push('/movie/${movie.id}');
-                      });
-                    },
-                    icon: const Icon(Icons.search))
-              ],
-            ),
+      bottom: false,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: SizedBox(
+          width: double.infinity,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(Icons.movie_outlined, color: colors.primary),
+              const SizedBox(width: 5),
+              Text('FilmsMedia', style: titleStyle),
+              const Spacer(),
+              IconButton(
+                onPressed: () {
+                  final searchedMovies = ref.read(searchedMoviesProvider);
+                  final searchQuery = ref.read(searchQueryProvider);
+                  showSearch<Movie?>(
+                      query: searchQuery,
+                      context: context,
+                      delegate:
+                          SearchMovieDelegate(
+                            initialMovies: searchedMovies,
+                            searchMovieCallback: ref.read(searchedMoviesProvider.notifier).searchMoviesCallback
+                          )).then((movie) {
+                    if (movie == null) return;
+                    context.push('/movie/${movie.id}');
+                  });
+                },
+                icon: const Icon(Icons.search)
+              ),
+              PopupMenuButton<String>(
+                onSelected: (value) {
+                  if (value == 'logout') {
+                    context.go('/');
+                  }
+                },
+                itemBuilder: (BuildContext context) => [
+                  const PopupMenuItem<String>(
+                    value: 'logout',
+                    child: Text('Cerrar sesión'),
+                  ),
+                ],
+                child: CircleAvatar(
+                  backgroundColor: Colors.grey.shade800,
+                  child: const Icon(Icons.person),
+                ),
+              ),
+            ],
           ),
-        ));
+        ),
+      )
+    );
   }
 }
