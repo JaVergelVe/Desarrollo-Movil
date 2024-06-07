@@ -22,5 +22,10 @@ final appRouter = GoRouter(
         return MovieScreen(movieId: movieId);
       },
     ),
+    GoRoute(
+      path: '/profile',
+      name: ProfileScreen.name,
+      builder: (context, state) => const ProfileScreen(),
+    )
   ],
 );

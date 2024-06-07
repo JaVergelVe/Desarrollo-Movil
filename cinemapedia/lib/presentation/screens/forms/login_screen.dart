@@ -1,21 +1,22 @@
+
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:cinemapedia/config/helpers/get_petition.dart';
+import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:cinemapedia/config/helpers/get_petition.dart';
 
-class LoginScreen extends StatefulWidget{
+class LoginScreen extends ConsumerStatefulWidget {
   static const name = "login_screen";
-  // ignore: unused_field
-  static const _idUserController = "";
 
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   final petition = GetPetition();
 
   final _formKey = GlobalKey<FormState>();
@@ -23,33 +24,58 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  dynamic info = [];
+  dynamic info = {};
 
-  Future<void> _submitForm() async {
+  Future<void> _submitForm(BuildContext context, WidgetRef ref) async {
     var email = _emailController.text;
     var password = _passwordController.text;
     var idUser = _idUserController.text;
-    var response = await petition.getInfo(idUser);
 
-    info = response;
+    try {
+      var response = await petition.getInfo(idUser);
 
-    if (_formKey.currentState?.validate() ?? false) {
-      if (email == info["email"] && password == info["password"]) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Inicio de sesion correcto'),
-            backgroundColor: Colors.green,
-          ),
-        );
-        context.go('/home');
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Correo electrónico o contraseña incorrectos'),
-            backgroundColor: Colors.red,
-          ),
-        );
+      info = {
+        'id': response['id'].toString(), // Convertir a String si es necesario
+        'email': response['email'],
+        'name': response['name'],
+        'password': response['password'],
+        'role': response['role'],
+        'avatar': response['avatar']
+      };
+
+      if (_formKey.currentState?.validate() ?? false) {
+        if (email == info["email"] && password == info["password"]) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Inicio de sesión correcto'),
+              backgroundColor: Colors.green,
+            ),
+          );
+          final user = User(
+            id: info['id'],
+            email: info['email'],
+            name: info['name'],
+            role: info['role'],
+            avatar: info['avatar']
+          );
+          ref.read(userProvider.notifier).setUser(user);
+          context.go('/home');
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Correo electrónico o contraseña incorrectos'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
       }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Error al obtener la información del usuario'),
+          backgroundColor: Colors.red,
+        ),
+      );
     }
   }
 
@@ -63,7 +89,6 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 80),
-              // Logo o Encabezado
               const Icon(
                 Icons.movie,
                 size: 100,
@@ -75,7 +100,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 40),
-              // Formulario
               Form(
                 key: _formKey,
                 child: Column(
@@ -137,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 40),
                     ElevatedButton(
-                      onPressed: _submitForm,
+                      onPressed: () => _submitForm(context, ref),
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 40),
                         shape: RoundedRectangleBorder(
